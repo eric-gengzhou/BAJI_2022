@@ -9,3 +9,14 @@ This page hosts all the analytical documents of the data analysis pertaining to 
 
 **EOIR data**: Department of Justice publishes data on immigration court & cases: https://www.justice.gov/eoir/foia-library-0
 
+## A brief and non-technical note on data-processing and methdology
+
+**Census data**
+This part of data requires minimum processing. However, to ensure granularity and the most accuracy estimates, we utilized both the original ACS Census data and the microsample data. One key aspect is to apply the weight unit correctly when using the Microsample data (IPMUS). 
+
+**EOIR data**
+The EOIR database contains several separate datasets, which we need to combine to fullfill all the requests. Specifically, they are: 
+* Case table (`A_tblCase`): a data table on the case_id (uniquely identify an immigrant to the US) level and also provides some demographic among other things of each immigrant in their entire database.
+* Proceeding table (`A_tblProceeding`): a data table on the proceeding_id (uniquely identify each proceeding for the same or different cases/immigrants) level and also provides information on each proceeding such as violent crime indicator, detention duration, etc. 
+* Bond table (`d_tblAssociatedBond`): a data table on 
+
