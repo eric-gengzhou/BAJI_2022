@@ -1,5 +1,4 @@
-# BAJI_2022
-Data analysis requests from BAJI &amp; IRC, NYU Law School
+# BAJI & IRC request 2022
 
 ## Intro:
 This page hosts all the analytical documents of the data analysis pertaining to requests from the Immigrant Rights Clinic(IRC), NYU in 2022. The requests are based on two separate datasets and therefore the analytical documents (description and codes) are listed separately. The file `EOIR_request` and `Census_request` include detailed descriptions and the **R & Stata** codes that produced the results. The purposes of these documents is to offer descriptions of how each request was fullfilled analytically and allow for replicability with the original and identical data. 
@@ -20,5 +19,6 @@ This part of data requires minimum processing. However, to ensure granularity an
 The EOIR database contains several separate datasets, which we need to combine to fullfill all the requests. Specifically, they are: 
 * Case table (`A_tblCase`): a data table on the case_id (uniquely identify an immigrant to the US) level and also provides some demographic among other things of each immigrant in their entire database.
 * Proceeding table (`A_tblProceeding`): a data table on the proceeding_id (uniquely identify each proceeding for the same or different cases/immigrants) level and also provides information on each proceeding such as violent crime indicator, detention duration, etc. 
-* Bond table (`d_tblAssociatedBond`): a data table on 
+* Bond table (`d_tblAssociatedBond`): a data table on the bond_id (uniquely identify each legal bond requested by the immigrant or their representative) and also provides information on the bond amount, number of bond requested, granted and updated amount. 
+* Time table (`tbl_schedule`): a data table on the case_id-proceeding_id level that shows the time stamp of each proceeding, along with the time that these proceedings and charges filed and/or delivered (to these immigrants).
 
