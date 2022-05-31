@@ -1,4 +1,4 @@
-# BAJI & IRC request 2022
+# BAJI & IRC report update project 2022
 
 ## Intro:
 This page hosts all the analytical documents of the data analysis pertaining to requests from the Immigrant Rights Clinic(IRC), NYU in 2022. The requests are based on two separate datasets and therefore the analytical documents (description and codes) are listed separately. The file `EOIR_request` and `Census_request` include detailed descriptions and the **R & Stata** codes that produced the results. The purposes of these documents is to offer descriptions of how each request was fullfilled analytically and allow for replicability with the original and identical data. 
@@ -32,5 +32,6 @@ A complete inventory (subject to changes over time) of all variables and their r
 * the variables we will use could be put into two groups, time-variant and time-invariant
   * time-invariant variables are demographic information such as nationality, race, ever detained, ever had criminal violations, etc.
   * time-variant variables are those that for each immigrant may vary across each year between 2015 - 2021, e.g., duration of detention, bond amount, etc.
-* there are several ways of dealing with time-variant variables, a common way is to look at the sum for each immigrant over time.   
+* there are several ways of dealing with time-variant variables, a common way is to look at the sum for each immigrant over time
+* for the details of the each step described above, please refer to the **R & Stata** codes in this folder
 
