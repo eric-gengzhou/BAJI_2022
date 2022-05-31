@@ -12,11 +12,6 @@ This page hosts all the analytical documents of the data analysis pertaining to 
 ## A full list of requests:
 
 Part 1 Statistical Portrait of Black Immigrants in the United States
-
-1.	American Communities Survey 
-a.	Found at: https://www.census.gov/programs-surveys/acs/data.html
-b.	Date Range: 2015 – 2019
-c.	Requests:
 i.	Percent of Black immigrants within the national Black population (6)
 ii.	Total foreign-born population (9)
 1.	Percent of this population that is Black (9)
@@ -126,5 +121,4 @@ xix.	What is the average bond amount for all immigrants?
 xx.	What is the average bond amount for Black, African, Caribbean immigrants?
 xxi.	What percent and total of all immigrants are unrepresented in court?
 xxii.	What is the average length of detention for all immigrants?
-![image](https://user-images.githubusercontent.com/57641098/171217914-e7ab0b9b-a1c0-458b-bd54-8222a15f7ec5.png)
 
