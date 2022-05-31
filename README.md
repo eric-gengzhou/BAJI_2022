@@ -7,4 +7,5 @@ This page hosts all the analytical documents of the data analysis pertaining to 
 ### Data sources:
 
 **Census data**: ACS-5 year estimate files and Microsample Public Use files of 2015 and 2019: https://data.census.gov/mdat/#/
+
 **EOIR data**: Department of Justice publishes data on immigration court & cases: https://www.justice.gov/eoir/foia-library-0
