@@ -22,3 +22,12 @@ The EOIR database contains several separate datasets, which we need to combine t
 * Bond table (`d_tblAssociatedBond`): a data table on the bond_id (uniquely identify each legal bond requested by the immigrant or their representative) and also provides information on the bond amount, number of bond requested, granted and updated amount. 
 * Time table (`tbl_schedule`): a data table on the case_id-proceeding_id level that shows the time stamp of each proceeding, along with the time that these proceedings and charges filed and/or delivered (to these immigrants).
 
+A complete inventory (subject to changes over time) of all variables and their residing data table can be found here: https://www.justice.gov/eoir/page/file/eoir-case-data-code-key/download
+
+**The logic/steps of processing these datasets are simple:**
+
+* data cleaning for each data table: mainly remove duplicated, blank, all mising data points
+* deciding the timeframe in which we will conduct the analysis; this time we limit the data to 2015 - 2021 (based on the variable `adj_date` from the time table)
+* sort the time table by `IDNCASE`, `IDNPROCEEDING` and `ADJ_DATE` so that we capture the earliest `adj_date` for each immigrant, if they fall into 2015-2015 we mark them and then merge these immigrants to other data tables with more information
+* other information could be put into two groups, time-variant and time-invariant.
+
