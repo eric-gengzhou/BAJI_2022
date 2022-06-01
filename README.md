@@ -26,12 +26,13 @@ A complete inventory (subject to changes over time) of all variables and their r
 
 **The logic/steps of processing these datasets are simple:**
 
-* data cleaning for each data table: mainly remove duplicated, blank, all mising data points
-* deciding the timeframe in which we will conduct the analysis; our analysis limits the data to 2015 - 2021 (based on the variable `adj_date` from the time table)
-* sort the time table by `IDNCASE`, `IDNPROCEEDING` and `ADJ_DATE` so that we capture the earliest `adj_date` for each immigrant. By this rule, if they fall into 2015-2015, we then merge these immigrants with other data tables
-* the variables we will use could be put into two groups, time-variant and time-invariant
+* data cleaning: for each data table mainly remove duplicated, blank, all mising data points
+* deciding the timeframe: our analysis limits the data to 2015 - 2021 (based on the variable `adj_date` from the time table)
+  * sort the time table by `IDNCASE`, `IDNPROCEEDING` and `ADJ_DATE` so that we capture the earliest `adj_date` for each immigrant. 
+  * By this rule, if they fall into 2015-2015, we then merge these immigrants with other data tables
+* selecting variables: variables can be put into two buckets, time-variant and time-invariant
   * time-invariant variables are demographic information such as nationality, race, ever detained, ever had criminal violations, etc.
   * time-variant variables are those that for each immigrant may vary across each year between 2015 - 2021, e.g., duration of detention, bond amount, etc.
-* there are several ways of dealing with time-variant variables, a common way is to look at the sum or average for each immigrant over time
+  * there are several ways of dealing with time-variant variables, a common way is to look at the sum or average for each immigrant over time
 * for the details of the each step described above, please refer to the **R & Stata** codes in this folder
 
