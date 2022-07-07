@@ -12,7 +12,9 @@ This page hosts all the analytical documents of the data analysis pertaining to 
 
 **Census data**
 
-This part of data requires minimum processing. However, to ensure granularity and the most accuracy estimates, we utilized both the original ACS Census data and the Public Use Microsample data. One key aspect is to apply the weight unit correctly when using the Microsample data (IPMUS). 
+This part of data requires minimum processing, as no data cleaning is needed. To access this part of data, I recommend using the ACS API: https://cran.r-project.org/web/packages/censusapi/vignettes/getting-started.html.
+
+However, to ensure granularity and the most accuracy estimates, we utilized both the original ACS Census data and the Public Use Microsample data. One key aspect is to apply the weight unit correctly when using the Microsample data (IPMUS). 
 
 **EOIR data**
 
