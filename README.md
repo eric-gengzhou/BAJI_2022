@@ -1,12 +1,11 @@
 # BAJI & IRC report update project 2022
 
 ## Intro:
-This page hosts all the descriptive and analytical documents in preparation for an update of the report *the State of Black Immigrants*. The work is funded and supported by the Immigrant Rights Clinic(IRC), NYU. We want to especially note this project is based on work that produced the previous report by [Ford Bohrmann](https://github.com/fordb/2015-08-immigrant-detention) and [BuzzFeed](https://github.com/BuzzFeedNews/2015-08-immigrant-detention/blob/master/methodology.md).
-
-
-The general The requests are based on two separate datasets and therefore the analytical documents (description and codes) are listed separately. The file `EOIR_request` and `Census_request` include detailed descriptions and the **R & Stata** codes that produced the results. The purposes of these documents is to offer descriptions of how each request was fullfilled analytically and allow for replicability with the original and identical data. 
+This page hosts all the descriptive and analytical documents in preparation for an update of the report *the State of Black Immigrants*. The work is funded and supported by the Immigrant Rights Clinic(IRC), NYU. We want to especially note this project is based on work that produced the previous report by [Ford Bohrmann](https://github.com/fordb/2015-08-immigrant-detention) and [BuzzFeed](https://github.com/BuzzFeedNews/2015-08-immigrant-detention/blob/master/methodology.md). The purposes of these documents is to offer descriptions of how each request was fullfilled analytically and allow for replicability with the original and identical data. 
 
 ## Data sources:
+The analysis sources from two separate datasets and therefore the analytical documents (description and codes) are listed separately. The file `EOIR_request` and `Census_request` include detailed descriptions and the **R & Stata** codes that produced the results. 
+
 **Census data**: ACS-5 year estimate files and Microsample Public Use files of 2015 and 2019: https://data.census.gov/mdat/#/
 
 **EOIR data**: Department of Justice publishes data on immigration court & cases: https://www.justice.gov/eoir/foia-library-0
@@ -15,14 +14,12 @@ The general The requests are based on two separate datasets and therefore the an
 
 **Census data**
 
-This part of data requires minimum processing, as no data cleaning is needed. To access this part of data, I recommend using the ACS API: https://cran.r-project.org/web/packages/censusapi/vignettes/getting-started.html.
-
-However, to ensure granularity and the most accuracy estimates, we utilized both the original ACS Census data and the Public Use Microsample data. One key aspect is to apply the weight unit correctly when using the Microsample data (IPMUS). 
+This part of data requires minimum processing, as no data cleaning is needed. To access this part of data, I recommend using the ACS API: https://cran.r-project.org/web/packages/censusapi/vignettes/getting-started.html. However, to ensure granularity and the most accurate estimates, we utilized both the original ACS Census data and the Public Use Microsample data. One key aspect is to apply the weight unit correctly when using the Microsample data (IPMUS). 
 
 **EOIR data**
 
 The EOIR database contains several separate datasets, which we need to combine to fullfill all the requests. Specifically, they are: 
-* Case table (`A_tblCase`): a data table on the case_id (uniquely identify an immigrant to the US) level and also provides some demographic among other things of each immigrant in their entire database.
+* Case table (`A_tblCase`): a data table on the case_id (uniquely identify an immigrant to the US) level and also provides some demographics among other things of each immigrant in their entire database.
 * Proceeding table (`A_tblProceeding`): a data table on the proceeding_id (uniquely identify each proceeding for the same or different cases/immigrants) level and also provides information on each proceeding such as violent crime indicator, detention duration, etc. 
 * Bond table (`d_tblAssociatedBond`): a data table on the bond_id (uniquely identify each legal bond requested by the immigrant or their representative) and also provides information on the bond amount, number of bond requested, granted and updated amount. 
 * Time table (`tbl_schedule`): a data table on the case_id-proceeding_id level that shows the time stamp of each proceeding, along with the time that these proceedings and charges filed and/or delivered (to these immigrants).
