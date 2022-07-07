@@ -1,7 +1,7 @@
 # BAJI & IRC report update project 2022
 
 ## Intro:
-This page hosts all the descriptive and analytical documents in preparation for an update of the report *the State of Black Immigrants*. The work is funded and supported by the Immigrant Rights Clinic(IRC), NYU. We want to especially note that the work is based work that previously produced the report by [Ford Bohrmann](https://github.com/fordb/2015-08-immigrant-detention) and [BuzzFeed](https://github.com/BuzzFeedNews/2015-08-immigrant-detention/blob/master/methodology.md).
+This page hosts all the descriptive and analytical documents in preparation for an update of the report *the State of Black Immigrants*. The work is funded and supported by the Immigrant Rights Clinic(IRC), NYU. We want to especially note this project is based on work that produced the previous report by [Ford Bohrmann](https://github.com/fordb/2015-08-immigrant-detention) and [BuzzFeed](https://github.com/BuzzFeedNews/2015-08-immigrant-detention/blob/master/methodology.md).
 
 
 The general The requests are based on two separate datasets and therefore the analytical documents (description and codes) are listed separately. The file `EOIR_request` and `Census_request` include detailed descriptions and the **R & Stata** codes that produced the results. The purposes of these documents is to offer descriptions of how each request was fullfilled analytically and allow for replicability with the original and identical data. 
