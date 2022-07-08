@@ -127,6 +127,7 @@ case_proc_15_21 <- case_proc_15_21[case_proc_15_21$custody!="",]
 
 table(is.na(case_proc_15_21$date_detained), case_proc_15_21$custody) # 72517 obs were detained but not detained date ever recorded
 
+### calculate the time under detention, which is time-variant on the caseid level
 case_proc_15_21_detain_date_cal <- case_proc_15_21[!duplicated(case_proc_15_21[,c("idncase","date_detained","date_released")]),c("idncase","date_detained","date_released")]
 
 case_proc_15_21_detain_date_cal$time_detention <- case_proc_15_21_detain_date_cal$date_released - case_proc_15_21_detain_date_cal$date_detained
@@ -151,6 +152,48 @@ case_proc_15_21_agg$crim_vio[case_proc_15_21_agg$crim_ind.mean<=1] <- 0
 case_proc_15_21_unique<- merge(case_proc_15_21_unique, case_proc_15_21_agg, by = "idncase")
 case_proc_15_21_unique$adj_year <- as.numeric(format(case_proc_15_21_unique$adj_date,"%Y"))
 
+#cleaning the bonds table 
+bond <- read.csv("FOIA TRAC Report 20211201/D_TblAssociatedBond.csv", sep = "\t", header = T, skipNul = T)
+bond <- bond[!duplicated(bond$IDNASSOCBOND),]
+colnames(bond) <- tolower(colnames(bond))
+bond_keep <- c("idncase", "bond_hear_req_date","initial_bond","new_bond")
+bond <- subset(bond, select = bond_keep)
+
+bond$bond_hear_req_date <- substr(bond$bond_hear_req_date, 1, 10)
+bond$bond_hear_req_date  <- as.Date(bond$bond_hear_req_date, format = "%Y-%m-%d")
+
+table(is.na(bond$bond_hear_req_date)) # 40 obs dont have a bond req date, would therefore be dropped
+bond <- bond[!is.na(bond$bond_hear_req_date),]
+
+bond$initial_bond <- as.numeric(bond$initial_bond)
+bond$new_bond <- as.numeric(bond$new_bond)
+
+bond$initial_bond[is.na(bond$initial_bond)] <- 0 
+bond$new_bond[is.na(bond$new_bond)] <- 0 
+
+#calculating the bond amount for each bond-id using initial and new bond amount
+#the logic here is if an immigrant has a new bond but not initial bond, then the bond amount is the new bond
+#if has initial bond but not new bond, the bond amount is the initial bond
+#if has both initial bond and new bond, the bond amount will be the new bond
+#if neither initial or new bond is available, the bond was never granted.
+
+bond$bond_amount <- 0 
+bond$bond_amount[bond$initial_bond==0 & bond$new_bond!=0] <- bond$new_bond[bond$initial_bond==0 & bond$new_bond!=0] #no initial bond but new bond
+bond$bond_amount[bond$initial_bond!=0 & bond$new_bond!=0] <- bond$new_bond[bond$initial_bond!=0 & bond$new_bond!=0] #has initial bond but new bond
+bond$bond_amount[bond$initial_bond!=0 & bond$new_bond==0] <- bond$initial_bond[bond$initial_bond!=0 & bond$new_bond==0] #has initial bond but no new bond
+bond$bond_amount[bond$initial_bond==0 & bond$new_bond==0] <- bond$initial_bond[bond$initial_bond==0 & bond$new_bond==0] #no initial bond or new bond either, i.e., requested bond but did not get one for this proceeding/bond id
+
+# averaging the bond amount for each case-id (immigrant)
+
+bond_case <- summaryBy( cbind(bond_amount,initial_bond) ~ idncase, FUN = c(sum, mean), data = bond)
+
+bond_case <- bond_case[2:nrow(bond_case),] #drop a blank obs
+
+bond_case$req_bond <- 1
+
+#merge bond and the unique case id data
+case_proc_15_19_unique_bond <- merge(case_proc_15_19_unique, bond_case, by = "idncase", all.x = T)
+
 
 
 #eoir case data requests
@@ -164,7 +207,7 @@ results_tbl[,1] <- req_names[,1]
 colnames(results_tbl) <- c("request_names","total.African","total.Caribbean","total.Black","total.all","per.African","per.Caribbean","per.Black","per.all","year")
 
 for (i in 1:7) {
-  #1. how many total immigrants are in removal proceedings?
+  #below are tempo data that will be looped through the years
   tempo_data <- subset(case_proc_15_21_unique, adj_year == 2014+i)
   tempo_data_bond <- subset(case_proc_15_21_unique_bond, adj_year == 2014+i)
   tempo_data_detain_time <- subset(case_proc_15_21_detain_date_cal, adj_year == 2014 + i)
