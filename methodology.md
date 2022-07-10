@@ -1,8 +1,8 @@
-# Methodology
+# Methodology for the EOIR data analysis
 
 ### About
 
-This is a brief summary of the how the analysis is conducted by steps and is based on the previous [methodology file](https://github.com/fordb/2015-08-immigrant-detention/blob/master/methodology.md).
+This is a brief summary of the how the analysis is conducted by steps using the EOIR data and is based on the previous [methodology file](https://github.com/fordb/2015-08-immigrant-detention/blob/master/methodology.md).
 
 ### Steps
 
@@ -22,5 +22,5 @@ This is a brief summary of the how the analysis is conducted by steps and is bas
 
 8. **Time in detention**, for the last request, we will calculate the time under detention for all the immigrant cases, which will require aggregating the detention period (calculated between the `detention date` and `release date`) for each proceedings that resulted in detention. Please refer to the [R code](https://github.com/eric-gengzhou/BAJI_2022/blob/main/EOIR_request.R) line 130 - 153 for more information.
 
-9. **Check output**, at last the [R code](https://github.com/eric-gengzhou/BAJI_2022/blob/main/EOIR_request.R) will produce a csv output containing all the requests by each year between 2015 and 2021. Most of the numbers should vary by year -- please check to make sure the numbers make sense. Also the year here simply identifies the first time an immigrant had a scheduled hearing, after which the interaction between the immigrants and DOJ would not cease.
+9. **Check output**, at last the [R code](https://github.com/eric-gengzhou/BAJI_2022/blob/main/EOIR_request.R) will produce a csv output containing all the requests by each year between 2015 and 2021. Most of the numbers should vary by year -- please check to make sure the numbers make sense. Note that the years that indicate the timeframe simply identify the time an immigrant had their first scheduled hearing, which often marks the begining of the interaction between the immigrants and DOJ court system.
 
