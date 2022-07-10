@@ -50,8 +50,6 @@ tab cen_amer
 //Percent of Black immigrants within the national Black population 
 svy: tab blk_all foreign_born
 
-di .013/.1366
-
 //Total foreign-born population
 
 svy: tab foreign_born if foreign_born == 1
@@ -166,8 +164,6 @@ tab cen_amer
 
 //Percent of Black immigrants within the national Black population 
 svy: tab blk_all foreign_born
-
-di .0145/.1391
 
 //Total foreign-born population
 
