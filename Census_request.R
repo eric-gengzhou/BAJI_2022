@@ -356,37 +356,3 @@ educ_25up <- get_acs(geography = "us", variables = c("B06009_025", "B06009_029",
 educ_25up$estimate <- as.numeric(educ_25up$estimate)
 educ_25up$per <- round(100*educ_25up[,4]/35988678, 2)
 educ_25up
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-apis <- listCensusApis()
-
-varss <- listCensusMetadata(
-  name = "2019/acs/acs5/cprofile/",
-)
-
-
-x <- getCensus(
-  name = "2019/acs/acs5/cprofile/variables/",
-  key = "74d5dac7bb4daaf36cf958a78078b02a8e64a2fd",
-  vars = "CP05_2019_038E",
-  region = "state:*",
-  time = 2019
-)
-
-
-
-ggarrange(coll_map, inc_map,rent_map, rob_map, common.legend = T,
-          nrow  = 2, ncol = 2, legend = c("right"))
