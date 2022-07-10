@@ -132,7 +132,9 @@ case_proc_15_21_detain_date_cal <- case_proc_15_21[!duplicated(case_proc_15_21[,
 
 case_proc_15_21_detain_date_cal$time_detention <- case_proc_15_21_detain_date_cal$date_released - case_proc_15_21_detain_date_cal$date_detained
 
-case_proc_15_21_detain_date_cal$time_detention[is.na(case_proc_15_21_detain_date_cal$date_released)] <- as.numeric(Sys.Date() - case_proc_15_21_detain_date_cal$date_detained[is.na(case_proc_15_21_detain_date_cal$date_released)]) #time in detention until now if no released date was posted
+#time in detention will be calculated until now (time that this code runs) if someone has a detained date 
+#but no release time was posted (make sure to use the most updated data to avoid bias)
+case_proc_15_21_detain_date_cal$time_detention[is.na(case_proc_15_21_detain_date_cal$date_released)] <- as.numeric(Sys.Date() - case_proc_15_21_detain_date_cal$date_detained[is.na(case_proc_15_21_detain_date_cal$date_released)]) 
 
 case_proc_15_21_detain_date_cal$time_detention[case_proc_15_21_detain_date_cal$time_detention<0] <- NA
 
